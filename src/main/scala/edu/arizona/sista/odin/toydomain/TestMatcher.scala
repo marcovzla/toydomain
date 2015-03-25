@@ -1,7 +1,5 @@
 package edu.arizona.sista.odin.toydomain
 
-import edu.arizona.sista.struct.Interval
-import edu.arizona.sista.processors.Document
 import edu.arizona.sista.processors.bionlp.BioNLPProcessor
 import edu.arizona.sista.odin._
 
