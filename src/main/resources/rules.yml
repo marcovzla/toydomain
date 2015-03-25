@@ -10,7 +10,7 @@
 - name: rule2
   label: [Phosphorylation, Event]
   pattern: |
-    Trigger = [word=/^phospho/ & tag=/^VB/] (?! of)
+    trigger = [word=/^phospho/ & tag=/^VB/] (?! of)
     theme: Protein = dobj
     cause: Protein = nsubj
 
@@ -21,7 +21,7 @@
     - Ubiquitination
     - Event
   pattern: |
-    triggER = ubiquitination (?= of)
+    trigger = ubiquitination (?= of)
     theme: Protein = prep_of
 
 # creates a regulation with a ubiquitination event as the theme
@@ -36,10 +36,10 @@
 # note that you need to capture a trigger for this to be an event mention
 # this event doesn't make sense biologically, is just an example
 - name: rule5
-  label: XXXtestXXX
+  label: DownRegulation
   type: token
   pattern: |
-    @theme:Phosphorylation and (?<TriGgEr> inhibits) the @cause:Ubiquitination
+    @theme:Phosphorylation and (?<trigger> inhibits) the @cause:Ubiquitination
 
 # example of an argument with a quantifier
 # with the '+' this rule finds a binding with 3 themes
