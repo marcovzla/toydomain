@@ -3,7 +3,7 @@
   label: Protein
   type: token
   pattern: |
-    [entity='B-Protein'] [entity='I-Protein']*
+    [entity='B-GENE'] [entity='I-GENE']*
 
 # this rule creates phosphorylation events
 # the arguments are Protein mentions

@@ -6,14 +6,10 @@ import edu.arizona.sista.processors.bionlp.BioNLPProcessor
 import edu.arizona.sista.odin._
 
 object TestMatcher extends App {
-  // two example sentences with manually defined named entity tags in IOB notation
-  val sentence0 = "TGFBR2 phosphorylates peri-kappa B and inhibits the ubiquitination of SMAD3."
-  val entities0 = Array("B-Protein", "O", "B-Protein", "I-Protein", "O", "O", "O", "O", "O", "B-Protein", "O")
-  val sentence1 = "TGFBR2 binds to TGFBR1 and SMAD3."
-  val entities1 = Array("B-Protein", "O", "O", "B-Protein", "O", "B-Protein", "O")
-
-  // concatenate sentences
-  val text = s"$sentence0 $sentence1"
+  // two example sentences
+  val text = """|TGFBR2 phosphorylates peri-kappa B and inhibits the ubiquitination of SMAD3.
+                |TGFBR2 binds to TGFBR1 and SMAD3.
+                |""".stripMargin
 
   // read rules from rules.yml file in resources
   val stream = getClass.getResourceAsStream("/rules.yml")
@@ -22,14 +18,12 @@ object TestMatcher extends App {
   // creates an extractor engine using the rules and the default actions
   val extractor = new ExtractorEngine(rules)
 
-  // annotate the sentences and override the named entity tags
+  // annotate the sentences
   val proc = new BioNLPProcessor
-  val doc = proc annotate text
-  doc.sentences(0).entities = Some(entities0)
-  doc.sentences(1).entities = Some(entities1)
+  val doc = proc.annotate(text)
 
   // extract mentions from annotated document
-  val mentions = extractor extractFrom doc
+  val mentions = extractor.extractFrom(doc)
 
   // code used for printing the found mentions
   for (m <- mentions) {
