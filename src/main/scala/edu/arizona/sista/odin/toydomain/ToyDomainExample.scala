@@ -3,7 +3,7 @@ package edu.arizona.sista.odin.toydomain
 import edu.arizona.sista.processors.bionlp.BioNLPProcessor
 import edu.arizona.sista.odin._
 
-object TestMatcher extends App {
+object ToyDomainExample extends App {
   // two example sentences
   val text = """|TGFBR2 phosphorylates peri-kappa B and inhibits the ubiquitination of SMAD3.
                 |TGFBR2 binds to TGFBR1 and SMAD3.
